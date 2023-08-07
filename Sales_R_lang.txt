@@ -1,0 +1,55 @@
+###################read###############
+sales=read.csv(file.choose() ,)sales
+##visualize
+hist(sales$Sales)
+hist(sales$PC , col='red')
+boxplot(sales$Sales)
+###############################
+data validation
+#######################
+datacleaning
+####################
+########data testing#
+#MODEL1= model1 <- lm(Sales~Advt,data=sales)#
+#MODEL1=#
+#MODEL1=#
+#MODEL1=#
+#########################################
+#####model1 ka detail#######
+#summary(model1)
+#anova(model1)
+#residuals(model1)
+#res=residuals(model1)
+#pre=predict(model1)
+#model1_sales=cbind(sales,pre,res)
+############################
+#MODEL2= model2 <- lm(Sales~PC,data=sales)#
+
+#########################################
+#####model1 ka detail#######
+#summary(model2)
+#anova(model2)
+#residuals(model2)
+#res2=residuals(model2)
+#pre2=predict(model2)
+#model2_sales=cbind(sales,pre2,res2)
+#################################
+#
+model3 <- lm(Sales ~., data =sales)
+#if data is large use BIC else use AIC for small data , when comparing multiple model this is one technique 
+#least value of AIC/BIC is better model
+#homoSCADICITY=>residual and actual following linear which means bad dw<1.5
+#hetroSCADICITY=>
+#dw(durban-watson) test will decide which one is accurate model
+#dw should always lies between 1.5 to 2.5 ---> model fitting
+#dw if less than 1.5  ---> following linear hence autocorelation
+#auto corelation --> error following linear with actual (not good) #hence optimize and convert auto corelation to non-linear
+#car package
+#sales and prediction following linear then its good
+#sales and resuidal following linear its bad
+#model4= lm(Sales ~ Advt+PC+log10(PC),data=sales)#3rd model optimized as dw  of model3 was <1.5
+#look at scatter of actual~predict,actual~residual
+#now dw of model4 is between 1.5 and 2.5 hence model4 is fitting
+#find value of estimated sales for jan-9L cost ,feb-11L , march -13L
+#sales=b0+b1*x1+b2*x2+b3*x3
+-47.699+1.6778*2-2.8571*7+193.3167*log10(7)
